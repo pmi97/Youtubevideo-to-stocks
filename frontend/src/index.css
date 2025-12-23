@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+@layer base {
+    body {
+        @apply antialiased;
+    }
+
+    ::selection {
+        @apply bg-accent-primary/30;
+    }
+}
+
+/* Component styles */
+@layer components {
+    .glass-card {
+        @apply bg-surface backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl;
+    }
+
+    .gradient-text {
+        @apply bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent;
+    }
+
+    .input-base {
+        @apply w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent-primary/50 focus:border-accent-primary;
+    }
+
+    .btn-primary {
+        @apply px-6 py-3 bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-accent-primary/25 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+    }
+
+    .btn-secondary {
+        @apply px-4 py-2 bg-white/5 border border-white/10 text-white rounded-xl transition-all duration-200 hover:bg-white/10 hover:border-white/20;
+    }
+}
+
+/* Gradient orbs background */
+.gradient-orb {
+    @apply absolute rounded-full blur-3xl opacity-30 animate-pulse-slow;
+}
+
+.orb-1 {
+    @apply w-96 h-96 bg-accent-primary -top-48 -left-48;
+}
+
+.orb-2 {
+    @apply w-80 h-80 bg-purple-600 top-1/2 -right-40;
+}
+
+.orb-3 {
+    @apply w-64 h-64 bg-accent-secondary bottom-0 left-1/3;
+}
