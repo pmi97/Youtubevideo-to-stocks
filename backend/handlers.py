@@ -236,7 +236,8 @@ Return ONLY a valid JSON object.
                     ],
                     api_key=self.api_key,
                     temperature=0.2,
-                    max_tokens=15000, # Increased for longer videos
+                    max_tokens=15000,
+                    response_format={"type": "json_object"},  # Force valid JSON output
                 )
                 
                 raw_content = response.choices[0].message.content
