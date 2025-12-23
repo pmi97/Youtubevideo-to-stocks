@@ -148,7 +148,7 @@ class GeminiAnalyzer:
 3. **Extract individual COMPANIES mentioned**
    - **EXCLUDE** broad market indices (S&P 500, Nasdaq, Dow Jones)
    - **EXCLUDE** generic funds or ETFs unless a specific ticker/product is analyzed in depth
-3. **Identify any stocks the presenter adds to their watchlist** - look for phrases like:
+3. **Identify any stocks the presenter adds to their watchlist** - look for phrases like the ones listed below or similar expressions:
    - English: "I'm saving this", "adding to my watchlist", "one to watch", "I'll keep an eye on"
    - Spanish: "me la guardo", "la voy a seguir", "la tengo en el radar", "la apunto"
    - Other languages: similar expressions indicating interest in tracking a stock
@@ -167,7 +167,14 @@ Return ONLY a valid JSON object.
       "context": "Context"
     }}
   ],
-  "watchlist": [],
+  "watchlist": [
+    {{
+      "name": "Company Name",
+      "ticker": "TICKER",
+      "reason": "Why the presenter is adding this to their watchlist",
+      "timestamp": "MM:SS"
+    }}
+  ],
   "summary": "Summary"
 }}
 
