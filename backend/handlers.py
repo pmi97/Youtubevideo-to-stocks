@@ -181,9 +181,10 @@ Return ONLY a valid JSON object.
     # Ordered models from highest to lowest performance
     # based on user availability and benchmarks
     MODELS_ORDER = [
+        "gemini/gemini-flash-latest",
+        "gemini/gemini-flash-lite-latest",
         "gemini/gemini-2.5-flash",
         "gemini/gemini-2.5-flash-lite",
-        "gemini/gemini-3-flash",
         "gemini/gemma-3-27b",
         "gemini/gemma-3-12b",
         "gemini/gemma-3-4b",
