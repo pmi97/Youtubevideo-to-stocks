@@ -36,13 +36,13 @@ resource "aws_lambda_function" "backend" {
 
 resource "aws_lambda_function_url" "backend_url" {
   function_name      = aws_lambda_function.backend.function_name
-  authorization_type = "NONE" # Public (CORS will be handled by our FastAPI middleware)
+  authorization_type = "NONE"
 
   cors {
     allow_credentials = true
-    allow_origins     = ["*"]
-    allow_methods     = ["*"]
-    allow_headers     = ["*"]
+    allow_origins     = ["https://${aws_cloudfront_distribution.frontend.domain_name}"]
+    allow_methods     = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+    allow_headers     = ["content-type", "authorization"]
     expose_headers    = ["keep-alive", "date"]
     max_age           = 86400
   }
