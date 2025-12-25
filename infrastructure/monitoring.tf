@@ -108,5 +108,9 @@ resource "aws_budgets_budget_action" "kill_backend" {
 
   execution_role_arn = aws_iam_role.budget_action_role.arn
   notification_type  = "ACTUAL"
-  subscriber_email_addresses = [var.alert_email]
+
+  subscriber {
+    subscription_type = "EMAIL"
+    address           = var.alert_email
+  }
 }
