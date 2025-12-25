@@ -29,5 +29,10 @@ secrets/
 
 # Legacy & Test Files
 backend/database_postgresql.py
-test_backend.py
 notebooks/
+
+# Terraform
+infrastructure/.terraform/
+infrastructure/*.tfstate
+infrastructure/*.tfstate.*
+infrastructure/terraform-deploy-policy.json
