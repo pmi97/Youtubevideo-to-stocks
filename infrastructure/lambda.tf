@@ -41,8 +41,8 @@ resource "aws_lambda_function_url" "backend_url" {
   cors {
     allow_credentials = true
     allow_origins     = ["https://${aws_cloudfront_distribution.frontend.domain_name}"]
-    allow_methods     = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
-    allow_headers     = ["content-type", "authorization"]
+    allow_methods     = ["*"]
+    allow_headers     = ["*"]
     expose_headers    = ["keep-alive", "date"]
     max_age           = 86400
   }
