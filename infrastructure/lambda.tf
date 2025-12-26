@@ -17,7 +17,7 @@ resource "aws_lambda_function" "backend" {
   image_uri     = "${aws_ecr_repository.backend.repository_url}:latest"
   
   # Security: Limit concurrency to prevent runaway costs during an attack
-  reserved_concurrent_executions = 5
+  # reserved_concurrent_executions = 5
   
   timeout     = 300 # 5 minutes (matches our previous Nginx timeout)
   memory_size = 512 # Adjust based on Python needs
