@@ -30,6 +30,7 @@ resource "aws_iam_policy" "dynamodb_access" {
     Statement = [
       {
         Action = [
+          "dynamodb:DescribeTable",
           "dynamodb:PutItem",
           "dynamodb:GetItem",
           "dynamodb:UpdateItem",
@@ -42,7 +43,8 @@ resource "aws_iam_policy" "dynamodb_access" {
           aws_dynamodb_table.youtube_video_analysis.arn,
           aws_dynamodb_table.youtube_subscribers.arn,
           aws_dynamodb_table.youtube_subscriptions.arn,
-          aws_dynamodb_table.youtube_processed_videos.arn
+          aws_dynamodb_table.youtube_processed_videos.arn,
+          aws_dynamodb_table.youtube_pending_videos.arn
         ]
       }
     ]
