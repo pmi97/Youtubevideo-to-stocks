@@ -1,9 +1,14 @@
 # Use official Python runtime
 FROM python:3.11-slim
 
+# Install AWS Lambda Web Adapter
+COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:0.8.4 /lambda-adapter /opt/extensions/lambda-adapter
+
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1
+    PYTHONUNBUFFERED=1 \
+    PORT=8000 \
+    AWS_LWA_INVOKE_MODE=response_stream
 
 # Set working directory
 WORKDIR /app
@@ -33,5 +38,5 @@ USER appuser
 # Expose port
 EXPOSE 8000
 
-# Run the application
+# Run the application - Lambda Web Adapter will proxy requests to this
 CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"]
