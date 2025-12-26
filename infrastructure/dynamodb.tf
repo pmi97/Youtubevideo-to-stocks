@@ -55,3 +55,16 @@ resource "aws_dynamodb_table" "youtube_processed_videos" {
 
   tags = local.common_tags
 }
+
+resource "aws_dynamodb_table" "youtube_pending_videos" {
+  name         = "youtube_pending_videos"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "video_id"
+
+  attribute {
+    name = "video_id"
+    type = "S"
+  }
+
+  tags = local.common_tags
+}
