@@ -27,8 +27,8 @@ echo "📦 Building and Pushing Backend Image..."
 # Login to ECR
 aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_URL
 
-# Build for Linux/AMD64 (Lambda standard)
-docker build --platform linux/amd64 -t youtube-agent-backend -f backend/Dockerfile .
+# Build for Linux/AMD64 (Lambda standard) - provenance=false required for Lambda
+docker build --platform linux/amd64 --provenance=false -t youtube-agent-backend -f backend/Dockerfile .
 docker tag youtube-agent-backend:latest $ECR_URL:latest
 docker push $ECR_URL:latest
 
