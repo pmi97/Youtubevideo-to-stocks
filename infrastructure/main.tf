@@ -34,6 +34,52 @@ variable "alert_email" {
   type        = string
 }
 
+# Sensitive variables for Lambda environment
+variable "gemini_api_key" {
+  description = "Gemini API key"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "youtube_api_key" {
+  description = "YouTube Data API key"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "smtp_host" {
+  description = "SMTP server hostname"
+  type        = string
+  default     = "smtp.gmail.com"
+}
+
+variable "smtp_port" {
+  description = "SMTP server port"
+  type        = string
+  default     = "587"
+}
+
+variable "smtp_user" {
+  description = "SMTP username (email)"
+  type        = string
+  default     = ""
+}
+
+variable "smtp_pass" {
+  description = "SMTP password (app password)"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "from_email" {
+  description = "From email address for notifications"
+  type        = string
+  default     = ""
+}
+
 locals {
   common_tags = {
     Project     = var.project_name
