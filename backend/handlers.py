@@ -11,6 +11,7 @@ from datetime import datetime
 
 from litellm import acompletion
 from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled, NoTranscriptFound
+from youtube_transcript_api.proxies import WebshareProxyConfig
 import aiosmtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -99,8 +100,17 @@ class YouTubeHandler:
     async def get_captions(self, video_id: str, language: str = "en") -> Optional[str]:
         """Get transcript/captions for a video with timestamps"""
         try:
+            # Configure proxy only on AWS Lambda (to bypass YouTube IP blocks)
+            proxy_config = None
+            if os.getenv("AWS_LAMBDA_FUNCTION_NAME") and os.getenv("WEBSHARE_PROXY_USERNAME"):
+                proxy_config = WebshareProxyConfig(
+                    proxy_username=os.getenv("WEBSHARE_PROXY_USERNAME"),
+                    proxy_password=os.getenv("WEBSHARE_PROXY_PASSWORD"),
+                )
+                logger.info("Using Webshare proxy for YouTube transcript fetch")
+            
             # New youtube-transcript-api v1.x uses instance methods
-            ytt_api = YouTubeTranscriptApi()
+            ytt_api = YouTubeTranscriptApi(proxy_config=proxy_config)
             
             # Try to fetch transcript with language preferences
             try:

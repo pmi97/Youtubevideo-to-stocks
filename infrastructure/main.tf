@@ -80,6 +80,20 @@ variable "from_email" {
   default     = ""
 }
 
+variable "webshare_proxy_username" {
+  description = "Webshare proxy username"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "webshare_proxy_password" {
+  description = "Webshare proxy password"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
 locals {
   common_tags = {
     Project     = var.project_name

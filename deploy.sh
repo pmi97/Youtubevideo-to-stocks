@@ -58,7 +58,9 @@ if [ "$INIT_MODE" = true ]; then
     -var="youtube_api_key=$YOUTUBE_API_KEY" \
     -var="smtp_user=$SMTP_USER" \
     -var="smtp_pass=$SMTP_PASS" \
-    -var="from_email=$FROM_EMAIL"
+    -var="from_email=$FROM_EMAIL" \
+    -var="webshare_proxy_username=$WEBSHARE_PROXY_USERNAME" \
+    -var="webshare_proxy_password=$WEBSHARE_PROXY_PASSWORD"
   
   # Get ECR URL (region uses default since output not available after targeted apply)
   ECR_URL=$(terraform output -raw ecr_repository_url)
@@ -82,7 +84,9 @@ if [ "$INIT_MODE" = true ]; then
     -var="youtube_api_key=$YOUTUBE_API_KEY" \
     -var="smtp_user=$SMTP_USER" \
     -var="smtp_pass=$SMTP_PASS" \
-    -var="from_email=$FROM_EMAIL"
+    -var="from_email=$FROM_EMAIL" \
+    -var="webshare_proxy_username=$WEBSHARE_PROXY_USERNAME" \
+    -var="webshare_proxy_password=$WEBSHARE_PROXY_PASSWORD"
   cd ..
   
   echo ""

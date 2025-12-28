@@ -24,16 +24,18 @@ resource "aws_lambda_function" "backend" {
 
   environment {
     variables = {
-      ENVIRONMENT           = var.environment
-      DYNAMODB_ENDPOINT     = ""
-      DYNAMODB_TABLE_PREFIX = "youtube_"
-      GEMINI_API_KEY        = var.gemini_api_key
-      YOUTUBE_API_KEY       = var.youtube_api_key
-      SMTP_HOST             = var.smtp_host
-      SMTP_PORT             = var.smtp_port
-      SMTP_USER             = var.smtp_user
-      SMTP_PASS             = var.smtp_pass
-      FROM_EMAIL            = var.from_email
+      ENVIRONMENT                = var.environment
+      DYNAMODB_ENDPOINT          = ""
+      DYNAMODB_TABLE_PREFIX      = "youtube_"
+      GEMINI_API_KEY             = var.gemini_api_key
+      YOUTUBE_API_KEY            = var.youtube_api_key
+      SMTP_HOST                  = var.smtp_host
+      SMTP_PORT                  = var.smtp_port
+      SMTP_USER                  = var.smtp_user
+      SMTP_PASS                  = var.smtp_pass
+      FROM_EMAIL                 = var.from_email
+      WEBSHARE_PROXY_USERNAME    = var.webshare_proxy_username
+      WEBSHARE_PROXY_PASSWORD    = var.webshare_proxy_password
     }
   }
 
