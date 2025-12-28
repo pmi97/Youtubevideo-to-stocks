@@ -25,9 +25,15 @@ resource "aws_lambda_function" "backend" {
   environment {
     variables = {
       ENVIRONMENT           = var.environment
-      DYNAMODB_ENDPOINT     = "" # Empty for production (uses AWS default)
+      DYNAMODB_ENDPOINT     = ""
       DYNAMODB_TABLE_PREFIX = "youtube_"
-      # Other secrets like GEMINI_API_KEY should be added manually in AWS Console or Secrets Manager
+      GEMINI_API_KEY        = var.gemini_api_key
+      YOUTUBE_API_KEY       = var.youtube_api_key
+      SMTP_HOST             = var.smtp_host
+      SMTP_PORT             = var.smtp_port
+      SMTP_USER             = var.smtp_user
+      SMTP_PASS             = var.smtp_pass
+      FROM_EMAIL            = var.from_email
     }
   }
 
