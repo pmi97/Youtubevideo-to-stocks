@@ -58,15 +58,17 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# CORS configuration
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[FRONTEND_URL, "http://localhost:3000", "http://localhost:5173", "*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# CORS configuration - Only add when NOT on AWS Lambda
+# Lambda Function URL handles CORS in production, adding it here causes duplicate headers
+if not os.getenv("AWS_LAMBDA_FUNCTION_NAME"):
+    FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=[FRONTEND_URL, "http://localhost:3000", "http://localhost:5173", "*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
 
 # ============== Input Sanitization ==============

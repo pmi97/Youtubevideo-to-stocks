@@ -7,8 +7,7 @@ COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:0.8.4 /lambda-adapter /opt
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PORT=8000 \
-    AWS_LWA_INVOKE_MODE=response_stream
+    PORT=8000
 
 # Set working directory
 WORKDIR /app
